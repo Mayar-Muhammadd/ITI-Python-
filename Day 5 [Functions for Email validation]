@@ -1,0 +1,22 @@
+def emails(email):
+ try: 
+  if '@' not in email or '.' not in email:
+   raise ValueError("enter valid email")
+  domain=email.split('@')[1]
+  if  '.' not in domain:
+   raise ValueError
+  if len(email) <= 2:
+   raise ValueError
+  else:
+   print("email is valid")
+ except ValueError:
+  print("enter a valid email please")  
+validemails=[]
+for trails in range(3):
+ email=input("please enter ur email:")  
+ if emails(email):
+   validemails.append(email)
+   break
+ else:
+  print("email is not vaild.")
+

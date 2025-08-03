@@ -1,0 +1,27 @@
+
+def emailvalid(email):
+    try:
+        if "@" not in email or "." not in email:
+            raise ValueError("Email should contain '@' and '.'")
+        
+        parts = email.split('@')
+        if len(parts) != 2:
+            raise ValueError("Invalid email structure")
+        
+        domain = parts[1]
+        if '.' not in domain:
+            raise ValueError("Invalid domain")
+        
+        print("Email is valid")
+        return True
+
+    except ValueError:
+        print("Error")
+        return False
+
+for trial in range(3):
+    email = input("Please enter an email: ")
+    if emailvalid(email):
+        break
+else:
+    raise("Email is invalid")
