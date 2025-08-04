@@ -1,0 +1,98 @@
+#name:mayar muhammad elsayed muhammad
+class person:
+    def __init__(self, name, money, mood, healthrate):
+        self.name=name
+        self.money=money
+        self.mood=mood
+        self.healthrate=healthrate
+    def sleep(self, hours):
+        if hours == 7:
+            self.mood= "HAPPYY"
+        if hours < 7:
+            self.mood= "tired"
+        if hours > 7:
+            self.mood= "lazy"    
+    def eat(self,meals):
+        if meals ==3:
+            self.healthrate="100% hth" 
+        if meals == 2:
+            self.healthrate="75% hth"
+        if meals == 1:
+            self.healthrate="50% hth"                  
+    def buy(self, item):
+        self.money += -(item*10) 
+
+
+
+
+class car :
+    def __init__(self, name, fuelrate, velocity):
+        self.name= name    
+        self.fuelrate= min (max(fuelrate,0),100)
+        self.velocity =min (max(velocity,0),200)
+    @property
+    def velocity(self):
+        return self.velocity    
+    @velocity.setter
+    def velocity (self, value):
+        self.velocity=min(max(value,0),200)
+
+    @property
+    def fuelrate(self):
+        return self.fuelrate        
+    @fuelrate.setter
+    def fuelrate(self, value):
+        self.fuelrate= min(max(value,0),100)
+
+    def run(self, velocity, distance):
+        self.velocity=velocity
+        neededamount= self.fuelrate-(distance//10)*10
+        distancewalked= (self.fuelrate//10)*10
+        distance=20-distancewalked
+        if neededamount <= self.fuelrate:
+            print(f"{self.name} u need to refuel ur car u need {neededamount}of gas")
+        if neededamount == 100:
+            self.stop(distance)
+                 
+    def stop(self,neededamount, distance):
+        self.velocity=0
+        if neededamount==100:
+            print(f"{self.name}u haven't arrived remaining distance is{distance}")
+        if neededamount !=100:
+            print (f"{self.name} u have arrived")    
+
+
+
+
+
+        
+
+
+class employee(person):
+    def __init__(self, name, money, mood, healthrate, id, car, salary, distancetowork): 
+        super().__init__(name, money, mood, healthrate)    
+        self.id=id
+        self.car=car
+        self.salary=salary
+        self.distancetowork=distancetowork
+    def work(self, hours):   
+        if hours == 8:
+            self.mood="Happy"
+        if hours > 8:
+            self.mood= "tired"
+        if hours < 8:
+            self.mood= "lazy"    
+    def drive(self, distance):
+        print(f"{self.name} is driving abt {distance}km")
+         
+
+    def refuel(self, gasamount=100):
+        car.fuelrate = gasamount
+
+
+
+       
+
+
+
+
